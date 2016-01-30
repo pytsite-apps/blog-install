@@ -1,27 +1,13 @@
 #!/bin/bash
 
-TYPE="project"
-
-while getopts ":b" OPT; do
-  case ${OPT} in
-    b)
-      TYPE="blog"
-      shift
-      ;;
-    \?)
-      echo "Invalid option: -${OPTARG}" >&2
-      ;;
-  esac
-done
-
-REPO_URL="https://github.com/pytsite/${TYPE}/archive/master.zip"
+REPO_URL="https://github.com/pytsite/blog/archive/master.zip"
 
 [ -z $1 ] && { echo 'Please specify your project name'; exit 1; }
 [ -d $1 ] && { echo "Project directory '$1' is already exists"; exit 1; }
 
 wget ${REPO_URL}
 unzip master.zip
-mv ${TYPE}-master $1
+mv blog-master $1
 rm -fv master.zip
 rm -fv $1/CHANGELOG.md
 echo "# $1" > $1/README.md
