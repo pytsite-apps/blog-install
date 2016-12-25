@@ -43,6 +43,8 @@ db:
   user: user
   password: password
   ssl: false
+
+languages: [en, uk, ru]
 EOF
 
 echo ''
