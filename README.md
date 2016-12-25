@@ -3,13 +3,13 @@
 ## Usage
 
 ```
-wget -qO - https://raw.githubusercontent.com/pytsite/setup/master/pytsite-setup.sh | bash -s PROJECT_NAME
+wget -qO - https://raw.githubusercontent.com/pytsite/setup/master/setup.sh | bash -s PROJECT_NAME
 ```
 
 or 
 
 ```
-curl -s https://raw.githubusercontent.com/pytsite/setup/master/pytsite-setup.sh | bash -s PROJECT_NAME
+curl -s https://raw.githubusercontent.com/pytsite/setup/master/setup.sh | bash -s PROJECT_NAME
 ```
 
 then
@@ -18,7 +18,7 @@ then
 cd PROJECT_NAME
 ```
 
-edit your configuration file, usually `app/config/default.yml`, and then
+edit your configuration file, usually `config/default.yml`, and then
 
 ```
 ./console setup
