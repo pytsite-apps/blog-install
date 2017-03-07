@@ -3,13 +3,13 @@
 ## Usage
 
 ```
-wget -qO - https://raw.githubusercontent.com/pytsite/setup/master/setup.sh | bash -s PROJECT_NAME
+wget -qO - https://raw.githubusercontent.com/pytsite/blog-setup/master/setup.sh | bash -s PROJECT_NAME
 ```
 
 or 
 
 ```
-curl -s https://raw.githubusercontent.com/pytsite/setup/master/setup.sh | bash -s PROJECT_NAME
+curl -s https://raw.githubusercontent.com/pytsite/blog-setup/master/setup.sh | bash -s PROJECT_NAME
 ```
 
 then
