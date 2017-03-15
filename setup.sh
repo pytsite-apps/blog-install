@@ -1,18 +1,21 @@
 #!/bin/bash
 
 APP_REPO_URL="https://github.com/pytsite/blog.git"
-THEME_REPO_URL="https://github.com/pytsite/theme-blog-default.git"
+THEME_NAME="default"
 
 [ -z $1 ] && { echo 'Please specify your project name'; exit 1; }
 [ -d $1 ] && { echo "Project directory '$1' is already exists"; exit 1; }
 
 mkdir $1 || { echo 'Error while creating project directory'; exit 1; }
 
+[ ! -z $2 ] && THEME_NAME=$2
+THEME_REPO_URL="https://github.com/pytsite/theme-blog-${THEME_NAME}.git"
+
 # Clone application
 git clone ${APP_REPO_URL} $1/app || { echo 'Error while cloning application'; exit 1; }
 
 # Clone theme
-cd $1 && mkdir themes && cd themes && git clone ${THEME_REPO_URL} blog-default && cd ..
+cd $1 && mkdir themes && cd themes && git clone ${THEME_REPO_URL} blog-${THEME_NAME} && cd ..
 [ $? -ne 0 ] && { echo 'Error while cloning theme'; exit 1; }
 
 # Setup virtual environment
