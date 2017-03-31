@@ -44,6 +44,7 @@ plugman:
     - content_digest
     - addthis
     - disqus
+    - seo
 EOF
 
 echo ''
