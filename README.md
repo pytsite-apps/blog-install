@@ -1,15 +1,15 @@
-# PytSite Application Setup
+# PytSite Blog Installation Helper
 
 ## Usage
 
 ```
-wget -qO - https://raw.githubusercontent.com/pytsite/blog-setup/master/setup.sh | bash -s PROJECT_NAME
+wget -qO - https://raw.githubusercontent.com/pytsite-apps/blog-install/master/install.sh | bash -s PROJECT_NAME
 ```
 
-or 
+or
 
 ```
-curl -s https://raw.githubusercontent.com/pytsite/blog-setup/master/setup.sh | bash -s PROJECT_NAME
+curl -s https://raw.githubusercontent.com/pytsite-apps/blog-install/master/install.sh | bash -s PROJECT_NAME
 ```
 
 then

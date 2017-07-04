@@ -1,7 +1,7 @@
 #!/bin/bash
 
-APP_REPO_URL="https://github.com/pytsite/blog.git"
-THEME_NAME="default"
+APP_REPO_URL="https://github.com/pytsite-apps/blog.git"
+THEME_NAME="basic"
 
 [ -z ${1} ] && { echo 'Please specify your project name'; exit 1; }
 [ -d ${1} ] && { echo "Project directory '${1}' is already exists"; exit 1; }
@@ -9,15 +9,19 @@ THEME_NAME="default"
 mkdir ${1} || { echo 'Error while creating project directory'; exit 1; }
 
 [ ! -z ${2} ] && THEME_NAME=${2}
-THEME_REPO_URL="https://github.com/pytsite/theme-blog-${THEME_NAME}.git"
+THEME_NAME=${THEME_NAME}-blog
+THEME_REPO_URL="https://github.com/pytsite-themes/${THEME_NAME}.git"
 
 # Clone application
 git clone ${APP_REPO_URL} ${1}/app || { echo 'Error while cloning application'; exit 1; }
 [ $? -ne 0 ] && { echo 'Error while cloning application'; exit 1; }
 
 # Clone theme
-cd ${1} && mkdir themes && cd themes && git clone ${THEME_REPO_URL} blog-${THEME_NAME} && cd ..
+cd ${1} && mkdir themes && cd themes && git clone ${THEME_REPO_URL} ${THEME_NAME} && cd ..
 [ $? -ne 0 ] && { echo 'Error while cloning theme'; exit 1; }
+
+# Remove unnecessary .git directories
+rm -rf ./app/.git && rm -rf ./themes/${THEME_NAME}/.git
 
 # Setup virtual environment
 virtualenv env && source ./env/bin/activate && pip install pytsite && cd ..
