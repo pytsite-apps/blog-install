@@ -43,6 +43,7 @@ languages: [en, uk, ru]
 
 plugman:
   plugins:
+    - auth_google
     - article
     - page
     - content_digest
