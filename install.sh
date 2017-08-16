@@ -9,7 +9,7 @@ THEME_NAME="basic"
 mkdir ${1} || { echo 'Error while creating project directory'; exit 1; }
 
 [ ! -z ${2} ] && THEME_NAME=${2}
-THEME_NAME=${THEME_NAME}-blog
+THEME_NAME=blog_${THEME_NAME}
 THEME_REPO_URL="https://github.com/pytsite-themes/${THEME_NAME}.git"
 
 # Clone application
