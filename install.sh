@@ -20,16 +20,17 @@ git clone ${APP_REPO_URL} ${1}/app || { echo 'Error while cloning application'; 
 cd ${1} && mkdir themes && cd themes && git clone ${THEME_REPO_URL} ${THEME_NAME} && cd ..
 [ $? -ne 0 ] && { echo 'Error while cloning theme'; exit 1; }
 
-# Remove unnecessary .git directories
-rm -rf ./app/.git && rm -rf ./themes/${THEME_NAME}/.git
-
 # Setup virtual environment
-virtualenv env && source ./env/bin/activate && pip install pytsite && cd ..
+virtualenv env && source ./env/bin/activate && pip install pytsite
 [ $? -ne 0 ] && { echo 'Virtual environment setup error'; exit 1; }
 
-# Make necessary files
-mkdir ${1}/config
-cat <<EOF > ${1}/config/default.yml
+# Install required plugins
+cd app && ./console plugman:install && cd ..
+[ $? -ne 0 ] && { echo 'Plugins installation error'; exit 1; }
+
+# Make default configuration file
+mkdir config
+cat <<EOF > config/default.yml
 server_name: test.com
 
 db:
@@ -40,18 +41,7 @@ db:
   # ssl: true
 
 languages: [en, uk, ru]
-
-plugman:
-  plugins:
-    - auth_google
-    - article
-    - page
-    - content_digest
-    - addthis
-    - disqus
-    - seo
 EOF
 
 echo ''
 echo 'Setup has been completed successfully'
-echo "Now you should edit configuration file(s) and run './console setup'"
