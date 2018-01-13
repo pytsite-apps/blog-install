@@ -1,7 +1,7 @@
 #!/bin/bash
 
 APP_REPO_URL="https://github.com/pytsite-apps/blog.git"
-THEME_NAME="basic"
+THEME_NAME="news"
 
 [ -z ${1} ] && { echo 'Please specify your project name'; exit 1; }
 [ -d ${1} ] && { echo "Project directory '${1}' is already exists"; exit 1; }
