@@ -24,10 +24,6 @@ cd ${1} && mkdir themes && cd themes && git clone ${THEME_REPO_URL} ${THEME_NAME
 virtualenv env && source ./env/bin/activate && pip install pytsite
 [ $? -ne 0 ] && { echo 'Virtual environment setup error'; exit 1; }
 
-# Install required plugins
-cd app && ./console plugman:install && cd ..
-[ $? -ne 0 ] && { echo 'Plugins installation error'; exit 1; }
-
 # Make default configuration file
 mkdir config
 cat <<EOF > config/default.yml
@@ -44,4 +40,4 @@ languages: [en, uk, ru]
 EOF
 
 echo ''
-echo 'Setup has been completed successfully'
+echo "Now setup your config file at 'config/default.yml' and run 'console plugman:install' to finish setup"
